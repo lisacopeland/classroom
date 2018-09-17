@@ -4,17 +4,20 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+      redirectTo: 'home',
+      pathMatch: 'full'
   },
   {
     path: 'home',
-    loadChildren: './home/home.module#HomePageModule'
+      loadChildren: './home/home.module#HomePageModule'
   },
   {
     path: 'list',
-    loadChildren: './list/list.module#ListPageModule'
-  }
+      loadChildren: './list/list.module#ListPageModule'
+  },
+  { path: 'class-detail/:id',
+      loadChildren: './class-detail/class-detail.module#ClassDetailPageModule' }
+
 ];
 
 @NgModule({
