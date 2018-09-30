@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<form (ngSubmit)="onSignup()" [formGroup]="signupForm">
+		<ion-list inset>
+
+			<ion-item>
+				<ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+			</ion-item>
+
+			<ion-item >
+				<ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+			</ion-item>
+			<ion-item>
+  		<ion-input type="text" placeholder="First Name" formControlName="firstName"></ion-input>
+			</ion-item>
+
+			<ion-item >
+				<ion-input type="text" placeholder="Last Name" formControlName="lastName"></ion-input>
+			</ion-item>
+
+		</ion-list>
+
+		<div padding-horizontal>
+			<div class="form-error">{{signupError}}</div>
+
+			<button ion-button full type="submit" [disabled]="!signupForm.valid">Sign Up</button>
+			<div class="Signup-footer">
+				<p>
+					<a href="#">Forgot password?</a>
+					If you're an existing user, please log in.
+				</p>
+			</div>
+
+			<ion-list>
+
+				<button ion-button type="button" icon-left block clear (click)="onLoginWithGoogle()">
+					<ion-icon name="logo-google"></ion-icon>
+					Log in with Google
+				</button>
+
+				<button ion-button type="button" block clear routerLink="/login">
+					<ion-icon name="person-add"></ion-icon>
+					Login
+				</button>
+			</ion-list>
+		</div>
+  </form>
+  </ion-content>

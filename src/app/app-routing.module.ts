@@ -16,7 +16,13 @@ const routes: Routes = [
       loadChildren: './list/list.module#ListPageModule'
   },
   { path: 'class-detail/:id',
-      loadChildren: './class-detail/class-detail.module#ClassDetailPageModule' }
+      loadChildren: './class-detail/class-detail.module#ClassDetailPageModule' },
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
+  { path: 'signup', loadChildren: './signup/signup.module#SignupPageModule' },
+  { path: 'logout', loadChildren: './logout/logout.module#LogoutPageModule' },
+  { path: 'students', loadChildren: './students/students.module#StudentsPageModule' },
+  { path: 'student-detail/:id', loadChildren: './students/student-detail/student-detail.module#StudentDetailPageModule' }
+
 
 ];
 

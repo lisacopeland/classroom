@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>students</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let student of students | async">
+      <ion-icon name="heart" slot="start"></ion-icon>
+      <div class="class-item">
+        {{student.name}}
+      </div>
+      <div class="class-item">
+        {{student.grade}}
+      </div>
+      <ion-button slot="end" routerLink="/student-detail/{{student.id}}">
+        <ion-icon name="create"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
