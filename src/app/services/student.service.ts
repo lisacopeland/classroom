@@ -32,20 +32,32 @@ export class StudentService {
   }
 
   getStudentById(id) {
-    const student = new Subject<StudentId>();
-    const queryObservable = student.pipe(
-       switchMap(data =>
-           this.angularFirestore.collection('items', ref => ref.where('id', '==', id)).valueChanges()
-     )
-    );
+    // return this.studentCollection = this.angularFirestore.collection('students', ref => ref.where('id', '==', id));
+    let thisCollection: AngularFirestoreCollection<Student>;
+    let students: Observable<Student[]>;
+      thisCollection = this.angularFirestore.collection<Student>('students', ref => {
+        // Compose a query using multiple .where() methods
+        return ref
+                .where(thisCollection.documentId(), '<', '100');
+      });
+      students = thisCollection.valueChanges();
+      return students;
+    }
+    // const student = new Subject<StudentId>();
+    // const queryObservable = student.pipe(
+    //    switchMap(data =>
+    //        this.angularFirestore.collection('students', ref => ref.where('id', '==', id)).valueChanges()
+    //  )
+    // );
 
-    // subscribe to changes
-    queryObservable.subscribe(queriedItems => {
-      console.log(queriedItems);
-    });
-    student.next(id);
+    // // subscribe to changes
+    // queryObservable.subscribe(queriedItems => {
+    //   console.log(queriedItems);
+    //   return queriedItems;
+    // });
+    // student.next(id);
 
-  }
+
 
   addStudent(newStudent: Student) {
     this.studentCollection.add(newStudent);
